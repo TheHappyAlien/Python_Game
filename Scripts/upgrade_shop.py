@@ -13,7 +13,7 @@ class Upgrade_shop(Game_entity):
             self.font = pygame.font.SysFont("arialblack", 10)
         else:
             self.font = pygame.font.SysFont("ubuntu", 10)
-            
+
         self.display_surface = display_surface
         self.text_x_offset = text_x_offset
         self.text_y_offset = text_y_offset

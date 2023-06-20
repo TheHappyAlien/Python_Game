@@ -7,6 +7,7 @@ import platform
 class Menu():
     def __init__(self, screen, game_started) -> None:
         system = platform.uname()[0]
+        print(system)
         if system == "Windows":
             self.font = pygame.font.SysFont("arialblack", 40)
         else:
