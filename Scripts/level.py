@@ -111,18 +111,18 @@ class Level:
                 # print(f"row: {int(tile.rect.top/tile_size)}, col: {int(tile.rect.left/tile_size)}")
     
     def spawn_enemies(self):
-        if len(self.enemies) < 50 and self.spawn_timer >= 1200/1+int(self.enemy_scaling_timer)*0.01:
+        if len(self.enemies) < 50 and self.spawn_timer >= 300/(1+int(self.enemy_scaling_timer/300)*0.01):
             self.spawn_timer = 0
 
             spawn_tile: Tile = self.floor_tiles[self.random.randint(0, self.floor_tiles_len-1)]
             pos = spawn_tile.rect.centerx, spawn_tile.rect.top
 
-            speed_scale_factor = 0.01*int(self.enemy_scaling_timer/1200)
+            speed_scale_factor = 0.01*int(self.enemy_scaling_timer/300)
             if speed_scale_factor > 1.5:
                 speed_scale_factor = 1.5
-            enemy_speed_scale = 1+speed_scale_factor+self.random.random()**0.1
+            enemy_speed_scale = 1+speed_scale_factor+self.random.random()*0.01
 
-            health_scale_factor = 0.01*int(self.enemy_scaling_timer/900)
+            health_scale_factor = 0.01*int(self.enemy_scaling_timer/300)
             enemy_health_scale = 1+health_scale_factor
 
             enemy = Enemy_cube(pos, self.display_surface, self.player.sprite, movement_speed_scale=enemy_speed_scale, max_health_scale=enemy_health_scale)

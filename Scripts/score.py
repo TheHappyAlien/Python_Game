@@ -10,8 +10,8 @@ class Score():
                 self.high_score = int(f.read())
 
     def save_score(self):
-        if self.score > self.high_score:
-            self.high_score = self.score             
-
-        with open('./high_score.txt', 'w') as f:
-            f.write(str(self.high_score))                
+        with open('./high_score.txt', 'w') as f:        
+            if self.score > self.high_score:
+                f.write(str(self.score))
+            else:
+                f.write(str(self.score))           

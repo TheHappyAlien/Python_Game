@@ -7,6 +7,9 @@ from support import draw_number
 
 pygame.init()
 
+score_saved = False
+game_started = False
+
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Projekt")
 
@@ -16,12 +19,19 @@ game_paused = True
 clock = pygame.time.Clock()
 level = Level(level_map, screen)
 
-menu = Menu(screen)
+menu = Menu(screen, game_started)
+
+
+
 # player = Player.Player(speed=25, scale=1.5, runSpeed=0.4, terminalVelocity=10, gravityScale=0.1)
 
 
 if __name__ == "__main__":
     while(True):
+        
+        if menu.quit:
+            pygame.quit()
+            sys.exit()            
 
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
@@ -33,24 +43,33 @@ if __name__ == "__main__":
 
         screen.fill((200,200,200))
 
-        if level.player.sprite.died:
-            menu.draw_death_menu(level.score_object.score, level.score_object.high_score)
-            level.score_object.save_score()
-            if menu.restart_level:
-                level = Level(level_map, screen)
-                game_paused = False
-                menu.restart_level = False
-
-        else:            
-            if game_paused:
-                menu.draw()
+        if not game_started:
+            menu.draw_start_menu()
+            game_started = menu.game_started
+        else:
+            if level.player.sprite.died:
+                menu.draw_death_menu(level.score_object.score, level.score_object.high_score)
+                print(level.score_object.score)
+                print(level.score_object.high_score)
+                if not score_saved:
+                    level.score_object.save_score()
                 if menu.restart_level:
                     level = Level(level_map, screen)
+                    menu = Menu(screen, game_started)
+                    score_saved = False
                     game_paused = False
                     menu.restart_level = False
-            else:
-                level.run()
-                draw_number(level.player_sprite.money, pygame.font.SysFont('arialblack', 30), (255, 255, 255), (screen_width*0.05, screen_height*0.9), screen)         
+
+            else:            
+                if game_paused:
+                    menu.draw()
+                    if menu.restart_level:
+                        level = Level(level_map, screen)
+                        game_paused = False
+                        menu.restart_level = False
+                else:
+                    level.run()
+                    draw_number(level.player_sprite.money, pygame.font.SysFont('arialblack', 30), (255, 255, 255), (screen_width*0.05, screen_height*0.9), screen)         
 
         pygame.display.update()
         clock.tick(60)

@@ -39,7 +39,7 @@ class Player(Game_entity):
 
         self.hit_anim_frame_index = 0
         self.gunshot_sound = pygame.mixer.Sound('./SoundEffects/gunshot.wav')
-        self.money = 100
+        self.money = 0
 
         # Used to turn off player movement on camera scroll
         self.can_move_x = True
