@@ -8,9 +8,9 @@ class Menu():
     def __init__(self, screen, game_started) -> None:
         system = platform.uname()[0]
         if system == "Windows":
-            self.font = pygame.font.SysFont("arialblack", 10)
+            self.font = pygame.font.SysFont("arialblack", 40)
         else:
-            self.font = pygame.font.SysFont("ubuntu", 10)
+            self.font = pygame.font.SysFont("ubuntu", 40)
             
         self.screen = screen
         self.text_colour = (10,10,10)
