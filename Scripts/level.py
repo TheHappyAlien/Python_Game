@@ -12,10 +12,10 @@ from attack_damage_upgrade import Attack_damage_upgrade
 
 
 class Level:
-    def __init__(self, level_data, surface) -> None:
+    def __init__(self, level_data, surface, score_object=None) -> None:
         
         # score
-        self.score_object = Score()
+        self.score_object = score_object
 
         # level setup
         self.display_surface = surface
@@ -237,7 +237,7 @@ class Level:
         self.passive_tiles.draw(self.display_surface)
 
         # enemies
-        self.enemies.update(self.world_shift_x, self.world_shift_y)
+        self.enemies.update()
         self.enemies.draw(self.display_surface)
         self.spawn_enemies()
 

@@ -114,11 +114,9 @@ class Enemy_cube(Game_entity):
     def update_y(self, y_shift):
         self.collision_rect.y += y_shift   
 
-    def update(self, x_shift, y_shift):
+    def update(self):
         super().update()
-        # self.collision_rect.x += x_shift
-        # self.collision_rect.y += y_shift
-      
+
         self.image = pygame.image.load('../Sprites/Enemy_cube/idle.png')
         
         if not self.is_stunned:

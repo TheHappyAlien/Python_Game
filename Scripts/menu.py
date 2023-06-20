@@ -7,7 +7,7 @@ import platform
 class Menu():
     def __init__(self, screen, game_started) -> None:
         system = platform.uname()[0]
-        print(system)
+
         if system == "Windows":
             self.font = pygame.font.SysFont("arialblack", 40)
         else:
@@ -35,14 +35,14 @@ class Menu():
         draw_number(score, self.font, (255, 255, 255), (800, 300), self.screen)
 
         # additional text
-        if score > high_score:        
-            draw_text("You Died :(", self.font, self.text_colour, (700, 200), self.screen)       
+        if score > high_score:      
+            draw_text("NEW HIGH SCORE!", self.font, self.text_colour, (600, 200), self.screen)               
         else:
-            draw_text("NEW HIGH SCORE!", self.font, self.text_colour, (700, 200), self.screen)       
+            draw_text("You Died :(", self.font, self.text_colour, (700, 200), self.screen)    
 
     def draw_start_menu(self):
         self.draw_start_button()
-        self.draw_quit_button() 
+        self.draw_quit_button()
         
     def draw(self):
 
