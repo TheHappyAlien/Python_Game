@@ -107,11 +107,18 @@ class Enemy_cube(Game_entity):
             self.is_attacking = False
             self.attack_anim_playing = False
             self.hit_player = False
+    
+    def update_x(self, x_shift):
+        self.collision_rect.x += x_shift
+
+    def update_y(self, y_shift):
+        self.collision_rect.y += y_shift   
 
     def update(self, x_shift, y_shift):
         super().update()
-        self.collision_rect.x += x_shift
-        self.collision_rect.y += y_shift
+        # self.collision_rect.x += x_shift
+        # self.collision_rect.y += y_shift
+      
         self.image = pygame.image.load('../Sprites/Enemy_cube/idle.png')
         
         if not self.is_stunned:
@@ -126,5 +133,5 @@ class Enemy_cube(Game_entity):
         else: 
             self.stun(20)
 
-        if self.health_percentage < 1 or self.rect.y >= 10000:
+        if self.health_percentage < 1:
             self.health_bar.draw(self.health_percentage, self.display_surface, (self.collision_rect.left, self.collision_rect.bottom + 10))        

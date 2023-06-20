@@ -214,16 +214,20 @@ class Level:
 
         # camera movement
         self.scroll_x()
-        self.scroll_y() 
+        self.scroll_y()
 
         # level tiles
         # need to do it this way, so that the collisions work properly        
         for tile in self.tiles:
             tile.update_x(self.world_shift_x)
+        for enemy in self.enemies:
+            enemy.update_x(self.world_shift_x)    
         self.horizontal_movement_collisions() 
         
         for tile in self.tiles:
-            tile.update_y(self.world_shift_y)          
+            tile.update_y(self.world_shift_y) 
+        for enemy in self.enemies:
+            enemy.update_y(self.world_shift_y)    
         self.vertical_movement_collisions()      
 
         self.tiles.draw(self.display_surface)
@@ -235,7 +239,6 @@ class Level:
         # enemies
         self.enemies.update(self.world_shift_x, self.world_shift_y)
         self.enemies.draw(self.display_surface)
-
         self.spawn_enemies()
 
         # shops

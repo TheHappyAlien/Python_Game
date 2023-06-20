@@ -35,6 +35,10 @@ if __name__ == "__main__":
 
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
+                
+                # if not game_started:
+
+
                 if event.key == pygame.K_ESCAPE:
                     game_paused = not game_paused
             if event.type == pygame.QUIT:
@@ -71,5 +75,6 @@ if __name__ == "__main__":
                     level.run()
                     draw_number(level.player_sprite.money, pygame.font.SysFont('arialblack', 30), (255, 255, 255), (screen_width*0.05, screen_height*0.9), screen)         
 
-        pygame.display.update()
+        # pygame.display.update()
+        pygame.display.flip()
         clock.tick(60)
