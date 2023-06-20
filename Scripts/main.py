@@ -24,7 +24,7 @@ menu = Menu(screen, game_started)
 
 base_font = pygame.font.Font(None, 32)
 username = ''
-username_input_rect = pygame.Rect(700, 200, 140, 32)
+username_input_rect = pygame.Rect(700, 250, 200, 32)
 active = False
 
 color_active = pygame.Color('lightskyblue3')
@@ -73,7 +73,7 @@ if __name__ == "__main__":
             pygame.draw.rect(screen, color, username_input_rect)            
             text_surface = base_font.render(username, True, (0, 0, 0))
             screen.blit(text_surface, (username_input_rect.x+5, username_input_rect.y+5))            
-            username_input_rect.w = max(120, text_surface.get_width()+10)            
+            username_input_rect.w = max(200, text_surface.get_width()+10)            
             game_started = menu.game_started
             if game_started:
                 level.score_object = Score(username)
@@ -84,7 +84,7 @@ if __name__ == "__main__":
                 if not score_saved:
                     level.score_object.save_score()
                     score_saved = True
-                    
+
                 if menu.restart_level:
                     level = Level(level_map, screen, Score(username))
                     menu = Menu(screen, game_started)

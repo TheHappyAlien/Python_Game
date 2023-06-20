@@ -41,6 +41,7 @@ class Menu():
             draw_text("You Died :(", self.font, self.text_colour, (700, 200), self.screen)    
 
     def draw_start_menu(self):
+        draw_text("Username:", self.font, self.text_colour, (700, 200), self.screen)
         self.draw_start_button()
         self.draw_quit_button()
         
