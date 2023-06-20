@@ -1,7 +1,7 @@
 import pygame
 
 class Game_entity(pygame.sprite.Sprite):
-    def __init__(self, pos, image, movement_speed=1, gravity_affected = True, gravity_force = 0.4, terminal_velocity = 1000, scale = 1, rect_top_offset = 0, rect_left_offset = 0, rect_width = 0, rect_height = 0) -> None:
+    def __init__(self, pos, image, movement_speed=1, gravity_affected = True, gravity_force = 0.4, terminal_velocity = 1000, scale = 1, rect_top_offset = 0, rect_left_offset = 0, rect_width = 0, rect_height = 0, max_health = 100.0) -> None:
         super().__init__()
 
         # preparing the image and rect
@@ -18,6 +18,11 @@ class Game_entity(pygame.sprite.Sprite):
         self.rect_left_offset = rect_left_offset
         self.rect_width = rect_width
         self.rect_height = rect_height
+
+        # health
+        self.max_health = max_health
+        self.current_health = max_health
+        self.health_percentage = 1  
 
         # the proper rect of the entity
         self.collision_rect = pygame.rect.Rect(left+self.rect_left_offset*self.scale, top+self.rect_top_offset*self.scale, self.rect_width*self.scale, self.rect_height*self.scale)
@@ -48,8 +53,13 @@ class Game_entity(pygame.sprite.Sprite):
 
     def update(self):
         self.apply_gravity()
+
+        # applying scale and rotation to the entity
         self.image = pygame.transform.scale(self.image, (self.image.get_width()*self.scale, self.image.get_height()*self.scale))
         if not self.facing_right:
             self.image = pygame.transform.flip(self.image,flip_x=True, flip_y=False)
 
         self.rect.update(self.collision_rect.left-self.rect_left_offset*self.scale, self.collision_rect.top-self.rect_top_offset*self.scale, 0, 0)
+
+        # updating health percentage
+        self.health_percentage = self.current_health/self.max_health
