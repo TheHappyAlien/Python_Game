@@ -38,7 +38,7 @@ class Player(Game_entity):
         self.hit = False
 
         self.hit_anim_frame_index = 0
-        self.gunshot_sound = pygame.mixer.Sound('../SoundEffects/gunshot.wav')
+        self.gunshot_sound = pygame.mixer.Sound('./SoundEffects/gunshot.wav')
         self.money = 0
 
         # Used to turn off player movement on camera scroll
@@ -48,7 +48,7 @@ class Player(Game_entity):
         self.jump_speed = -0.3*tile_size
 
     def import_player_assets(self):
-        player_path = '../Sprites/Player/'
+        player_path = './Sprites/Player/'
         self.animations = {'idle':[], 'run':[], 'jump':[], 'fall':[], 'attack':[], 'gun_hit':[]}
 
         for animation in self.animations.keys():

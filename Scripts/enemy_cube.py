@@ -8,7 +8,7 @@ from health_bar import Health_bar
 class Enemy_cube(Game_entity):
     def __init__(self, pos, surface, player: Player, movement_speed_scale=1, max_health_scale=1) -> None:
 
-        super().__init__(pos, image=pygame.image.load('../Sprites/Enemy_cube/idle.png'), rect_width=16, rect_height=16, movement_speed=2*movement_speed_scale, max_health=50*max_health_scale)    
+        super().__init__(pos, image=pygame.image.load('./Sprites/Enemy_cube/idle.png'), rect_width=16, rect_height=16, movement_speed=2*movement_speed_scale, max_health=50*max_health_scale)    
         self.display_surface = surface
 
         self.movement_speed_scale = movement_speed_scale
@@ -117,7 +117,7 @@ class Enemy_cube(Game_entity):
     def update(self):
         super().update()
 
-        self.image = pygame.image.load('../Sprites/Enemy_cube/idle.png')
+        self.image = pygame.image.load('./Sprites/Enemy_cube/idle.png')
         
         if not self.is_stunned:
             if self.can_change_direction:
