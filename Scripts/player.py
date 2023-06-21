@@ -39,8 +39,9 @@ class Player(Game_entity):
 
         self.hit_anim_frame_index = 0
         self.gunshot_sound = pygame.mixer.Sound('./SoundEffects/gunshot.wav')
-        self.money = 0
 
+        self.money = 0
+        self.point_earned_sound = pygame.mixer.Sound('./SoundEffects/point_earned.wav')
         # Used to turn off player movement on camera scroll
         self.can_move_x = True
         self.can_move_y = True
@@ -160,6 +161,7 @@ class Player(Game_entity):
 
                 if enemy_hit.current_health <= 0:
                     enemy_hit.kill()
+                    self.point_earned_sound.play()
                     self.score_object.score += 1
                     self.money += 1
             else:
