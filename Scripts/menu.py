@@ -41,8 +41,8 @@ class Menu():
             draw_text("You Died :(", self.font, self.text_colour, (700, 200), self.screen)    
 
     def draw_start_menu(self):
-        draw_text("Python Shooter", self.font, self.text_colour, (620, 100), self.screen)
-        draw_text("Username:", self.font, self.text_colour, (680, 200), self.screen)
+        draw_text("Python Shooter", self.font, self.text_colour, (640, 100), self.screen)
+        draw_text("Username:", self.font, self.text_colour, (690, 200), self.screen)
         self.draw_start_button()
         self.draw_quit_button()
         
