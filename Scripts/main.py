@@ -12,7 +12,7 @@ score_saved = False
 game_started = False
 
 screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption("Projekt")
+pygame.display.set_caption("Python Shooter")
 
 # game variables
 game_paused = True
@@ -24,7 +24,7 @@ menu = Menu(screen, game_started)
 
 base_font = pygame.font.Font(None, 32)
 username = ''
-username_input_rect = pygame.Rect(700, 250, 200, 32)
+username_input_rect = pygame.Rect(690, 250, 200, 32)
 active = False
 
 color_active = pygame.Color('lightskyblue3')
