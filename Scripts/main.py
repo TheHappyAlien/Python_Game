@@ -48,7 +48,7 @@ if __name__ == "__main__":
                     else:
                         active = False
 
-                if event.type == pygame.KEYDOWN:
+                if event.type == pygame.KEYDOWN and active:
                             if event.key == pygame.K_BACKSPACE:
                                 username = username[:-1]
                             else:

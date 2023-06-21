@@ -22,7 +22,7 @@ class Game_entity(pygame.sprite.Sprite):
         # health
         self.max_health = max_health
         self.current_health = max_health
-        self.health_percentage = 1  
+        self.health_percentage = 1
 
         # the proper rect of the entity
         self.collision_rect = pygame.rect.Rect(left+self.rect_left_offset*self.scale, top+self.rect_top_offset*self.scale, self.rect_width*self.scale, self.rect_height*self.scale)
