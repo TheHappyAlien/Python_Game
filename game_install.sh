@@ -14,6 +14,7 @@ mv ./SoundEffects ./dist
 mv ./Sprites ./dist
 mv ./high_score.txt ./dist/high_score.txt
 rm -r ./Scripts
+rm ./game_install.sh
 
 cd ./dist
 
